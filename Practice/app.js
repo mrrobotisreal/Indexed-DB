@@ -35,4 +35,16 @@ request.onsuccess = function(e) {
     studentAnswer: true,
     result: true,
   });
+
+  store.put({
+    qID: 2,
+    questionText: 'The grass is green.',
+    correctAnswer: true,
+    studentAnswer: true,
+    result: true,
+  });
+
+  tx.oncomplete = function() {
+    db.close();
+  }
 };
