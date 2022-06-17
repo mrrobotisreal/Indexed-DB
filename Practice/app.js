@@ -28,21 +28,34 @@ request.onsuccess = function(e) {
     console.error('ERROR: ', e.target.errorCode);
   }
 
-  store.put({
-    qID: 1,
-    questionText: 'The sky is blue.',
-    correctAnswer: true,
-    studentAnswer: true,
-    result: true,
-  });
+  // store.put({
+  //   qID: 1,
+  //   questionText: 'The sky is blue.',
+  //   correctAnswer: true,
+  //   studentAnswer: true,
+  //   result: true,
+  // });
 
-  store.put({
-    qID: 2,
-    questionText: 'The grass is green.',
-    correctAnswer: true,
-    studentAnswer: true,
-    result: true,
-  });
+  // store.put({
+  //   qID: 2,
+  //   questionText: 'The grass is green.',
+  //   correctAnswer: true,
+  //   studentAnswer: true,
+  //   result: true,
+  // });
+
+  let q1 = store.get(1);
+  let qs = index.get('The grass is green.');
+
+  q1.onsuccess = function() {
+    console.log('q1: ', q1.result);
+    console.log('q1 questionText: ', q1.result.questionText);
+  };
+
+  qs.onsuccess = function() {
+    console.log('qs: ', qs.result);
+    console.log('qs questionText: ', qs.result.questionText);
+  };
 
   tx.oncomplete = function() {
     db.close();
