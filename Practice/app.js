@@ -20,4 +20,19 @@ request.onerror = function(e) {
 
 request.onsuccess = function(e) {
   db = request.result;
+  tx = db.transaction('QuestionsStore', 'readwrite');
+  store = tx.objectStore('QuestionsStore');
+  index = store.index('questionText');
+
+  db.onerror = function(e) {
+    console.error('ERROR: ', e.target.errorCode);
+  }
+
+  store.put({
+    qID: 1,
+    questionText: 'The sky is blue.',
+    correctAnswer: true,
+    studentAnswer: true,
+    result: true,
+  });
 };
