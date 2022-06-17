@@ -1,3 +1,8 @@
+/*
+  Had to use python3 http server and navigate to http://localhost:8000/index.html for it to work.
+  Otherwise Chrome does not allow it.
+*/
+
 //qID, questionText, correctAnswer, studentAnswer, result
 
 window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
@@ -28,21 +33,21 @@ request.onsuccess = function(e) {
     console.error('ERROR: ', e.target.errorCode);
   }
 
-  // store.put({
-  //   qID: 1,
-  //   questionText: 'The sky is blue.',
-  //   correctAnswer: true,
-  //   studentAnswer: true,
-  //   result: true,
-  // });
+  store.put({
+    qID: 1,
+    questionText: 'The sky is blue.',
+    correctAnswer: true,
+    studentAnswer: true,
+    result: true,
+  });
 
-  // store.put({
-  //   qID: 2,
-  //   questionText: 'The grass is green.',
-  //   correctAnswer: true,
-  //   studentAnswer: true,
-  //   result: true,
-  // });
+  store.put({
+    qID: 2,
+    questionText: 'The grass is green.',
+    correctAnswer: true,
+    studentAnswer: true,
+    result: true,
+  });
 
   let q1 = store.get(1);
   let qs = index.get('The grass is green.');
