@@ -4,6 +4,7 @@
 */
 
 //qID, questionText, correctAnswer, studentAnswer, result
+const Queue = require('./queue');
 
 window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 
@@ -51,15 +52,18 @@ request.onsuccess = function(e) {
 
   let q1 = store.get(1);
   let qs = index.get('The grass is green.');
+  let queue = new Queue();
 
   q1.onsuccess = function() {
     console.log('q1: ', q1.result);
     console.log('q1 questionText: ', q1.result.questionText);
+    queue.enqueue(q1.result);
   };
 
   qs.onsuccess = function() {
     console.log('qs: ', qs.result);
     console.log('qs questionText: ', qs.result.questionText);
+    queue.enqueue(qs.result);
   };
 
   tx.oncomplete = function() {
